@@ -17,10 +17,6 @@ def pde(x, y, v):
     dy_xx = dde.grad.hessian(y, x, i=0, j=0)
     return dy_t + v * dy_x - alpha * dy_xx
 
-
-# The same problem as advection_unaligned_pideeponet.py
-# But consider time as the 2nd space coordinate
-# to demonstrate the implementation of 2D problems
 geom = dde.geometry.Rectangle([0, 0], [1, 1])
 
 '''
@@ -96,4 +92,5 @@ plt.figure()
 plt.imshow(u_pred)
 plt.colorbar()
 plt.show()
+
 print(dde.metrics.l2_relative_error(u_true, u_pred))
